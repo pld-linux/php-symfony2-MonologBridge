@@ -4,12 +4,12 @@
 %include	/usr/lib/rpm/macros.php
 Summary:	%{pearname} - Symfony2 Monolog Bridge
 Name:		php-symfony2-MonologBridge
-Version:	2.1.4
+Version:	2.1.6
 Release:	1
 License:	MIT
 Group:		Development/Languages/PHP
 Source0:	http://pear.symfony.com/get/%{pearname}-%{version}.tgz
-# Source0-md5:	eb83c017d553265e4feea86f32564c00
+# Source0-md5:	870de849edac31abea0c3e3d5ec94237
 URL:		http://pear.symfony.com/package/MonologBridge/
 BuildRequires:	php-channel(pear.symfony.com)
 BuildRequires:	php-pear-PEAR >= 1:1.4.0
