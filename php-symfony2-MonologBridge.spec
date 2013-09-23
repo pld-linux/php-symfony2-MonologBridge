@@ -1,42 +1,38 @@
-%define		status		stable
 %define		pearname	MonologBridge
 %define		php_min_version 5.3.3
 %include	/usr/lib/rpm/macros.php
-Summary:	%{pearname} - Symfony2 Monolog Bridge
+Summary:	Symfony2 Monolog Bridge
 Name:		php-symfony2-MonologBridge
-Version:	2.1.6
+Version:	2.3.4
 Release:	1
 License:	MIT
 Group:		Development/Languages/PHP
 Source0:	http://pear.symfony.com/get/%{pearname}-%{version}.tgz
-# Source0-md5:	870de849edac31abea0c3e3d5ec94237
-URL:		http://pear.symfony.com/package/MonologBridge/
+# Source0-md5:	5407df6c9ab295e6b05a1cb32af9f21d
+URL:		https://github.com/symfony/MonologBridge
 BuildRequires:	php-channel(pear.symfony.com)
 BuildRequires:	php-pear-PEAR >= 1:1.4.0
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	rpmbuild(macros) >= 1.610
 Requires:	php(core) >= %{php_min_version}
 Requires:	php-channel(pear.symfony.com)
+#Requires:	php-monolog-Monolog >= 1.3
 Requires:	php-pear >= 4:1.3.10
-Requires:	php-symfony2-HttpKernel
+Requires:	php-symfony2-HttpKernel >= 2.2
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Symfony2 Monolog Bridge
-
-In PEAR status of this package is: %{status}.
+Provides integration for Monolog with various Symfony2 components.
 
 %prep
 %pear_package_setup
 
 # no packaging of tests
-rm -r .%{php_pear_dir}/Symfony/Bridge/Monolog/Tests
-rm .%{php_pear_dir}/Symfony/Bridge/Monolog/phpunit.xml.dist
+mv .%{php_pear_dir}/Symfony/Bridge/Monolog/Tests .
+mv .%{php_pear_dir}/Symfony/Bridge/Monolog/phpunit.xml.dist .
 
 # fixups
-mv .%{php_pear_dir}/Symfony/Bridge/Monolog/CHANGELOG.md .
-rm .%{php_pear_dir}/Symfony/Bridge/Monolog/.gitattributes
 mv docs/%{pearname}/Symfony/Bridge/Monolog/* .
 
 %install
