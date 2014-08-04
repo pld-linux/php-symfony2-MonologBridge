@@ -3,21 +3,19 @@
 %include	/usr/lib/rpm/macros.php
 Summary:	Symfony2 Monolog Bridge
 Name:		php-symfony2-MonologBridge
-Version:	2.4.4
+Version:	2.4.8
 Release:	1
 License:	MIT
 Group:		Development/Languages/PHP
-Source0:	http://pear.symfony.com/get/%{pearname}-%{version}.tgz
-# Source0-md5:	3c9b85ab775354fbe136baa97e09ca11
+Source0:	https://github.com/symfony/%{pearname}/archive/v%{version}/%{pearname}-%{version}.tar.gz
+# Source0-md5:	325f27085bfb1bc945d80d3749597a17
 URL:		https://github.com/symfony/MonologBridge
-BuildRequires:	php-channel(pear.symfony.com)
-BuildRequires:	php-pear-PEAR >= 1:1.4.0
+BuildRequires:	phpab
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	rpmbuild(macros) >= 1.610
 Requires:	php(core) >= %{php_min_version}
 Requires:	php(pcre)
 Requires:	php(spl)
-Requires:	php-channel(pear.symfony.com)
 #Requires:	php-monolog-Monolog >= 1.3
 Requires:	php-pear >= 4:1.3.10
 Suggests:	php-symfony2-Console >= 2.3
@@ -30,27 +28,23 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Provides integration for Monolog with various Symfony2 components.
 
 %prep
-%pear_package_setup
+%setup -q -n %{pearname}-%{version}
 
-# no packaging of tests
-mv .%{php_pear_dir}/Symfony/Bridge/Monolog/Tests .
-mv .%{php_pear_dir}/Symfony/Bridge/Monolog/phpunit.xml.dist .
-
-# fixups
-mv docs/%{pearname}/Symfony/Bridge/Monolog/* .
+%build
+phpab -n -e '*/Tests/*' -o autoload.php .
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{php_pear_dir}
-%pear_package_install
+install -d $RPM_BUILD_ROOT%{php_pear_dir}/Symfony/Bridge/Monolog
+cp -a *.php */ $RPM_BUILD_ROOT%{php_pear_dir}/Symfony/Bridge/Monolog
+rm -r $RPM_BUILD_ROOT%{php_pear_dir}/Symfony/Bridge/Monolog/Tests
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGELOG.md LICENSE README.md install.log
-%{php_pear_dir}/.registry/.channel.*/*.reg
+%doc CHANGELOG.md LICENSE README.md
 %dir %{php_pear_dir}/Symfony/Bridge/Monolog
 %{php_pear_dir}/Symfony/Bridge/Monolog/*.php
 %{php_pear_dir}/Symfony/Bridge/Monolog/Formatter
