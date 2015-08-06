@@ -1,14 +1,14 @@
-%define		pearname	MonologBridge
-%define		php_min_version 5.3.3
+%define		package	MonologBridge
+%define		php_min_version 5.3.9
 %include	/usr/lib/rpm/macros.php
 Summary:	Symfony2 Monolog Bridge
 Name:		php-symfony2-MonologBridge
-Version:	2.4.8
+Version:	2.7.3
 Release:	1
 License:	MIT
 Group:		Development/Languages/PHP
-Source0:	https://github.com/symfony/%{pearname}/archive/v%{version}/%{pearname}-%{version}.tar.gz
-# Source0-md5:	325f27085bfb1bc945d80d3749597a17
+Source0:	https://github.com/symfony/%{package}/archive/v%{version}/%{package}-%{version}.tar.gz
+# Source0-md5:	ea690818a0ad590a872fd06af40189b9
 URL:		https://github.com/symfony/MonologBridge
 BuildRequires:	phpab
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
@@ -16,7 +16,7 @@ BuildRequires:	rpmbuild(macros) >= 1.610
 Requires:	php(core) >= %{php_min_version}
 Requires:	php(pcre)
 Requires:	php(spl)
-#Requires:	php-monolog-Monolog >= 1.3
+#Requires:	php-monolog-Monolog >= 1.11
 Requires:	php-pear >= 4:1.3.10
 Suggests:	php-symfony2-Console >= 2.3
 Suggests:	php-symfony2-EventDispatcher
@@ -28,7 +28,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Provides integration for Monolog with various Symfony2 components.
 
 %prep
-%setup -q -n %{pearname}-%{version}
+%setup -q -n %{package}-%{version}
 
 %build
 phpab -n -e '*/Tests/*' -o autoloader.php .
