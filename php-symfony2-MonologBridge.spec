@@ -35,9 +35,9 @@ phpab -n -e '*/Tests/*' -o autoload.php .
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{php_pear_dir}/Symfony/Bridge/Monolog
-cp -a *.php */ $RPM_BUILD_ROOT%{php_pear_dir}/Symfony/Bridge/Monolog
-rm -r $RPM_BUILD_ROOT%{php_pear_dir}/Symfony/Bridge/Monolog/Tests
+install -d $RPM_BUILD_ROOT%{php_data_dir}/Symfony/Bridge/Monolog
+cp -a *.php */ $RPM_BUILD_ROOT%{php_data_dir}/Symfony/Bridge/Monolog
+rm -r $RPM_BUILD_ROOT%{php_data_dir}/Symfony/Bridge/Monolog/Tests
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -45,8 +45,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc CHANGELOG.md LICENSE README.md
-%dir %{php_pear_dir}/Symfony/Bridge/Monolog
-%{php_pear_dir}/Symfony/Bridge/Monolog/*.php
-%{php_pear_dir}/Symfony/Bridge/Monolog/Formatter
-%{php_pear_dir}/Symfony/Bridge/Monolog/Handler
-%{php_pear_dir}/Symfony/Bridge/Monolog/Processor
+%dir %{php_data_dir}/Symfony/Bridge/Monolog
+%{php_data_dir}/Symfony/Bridge/Monolog/*.php
+%{php_data_dir}/Symfony/Bridge/Monolog/Formatter
+%{php_data_dir}/Symfony/Bridge/Monolog/Handler
+%{php_data_dir}/Symfony/Bridge/Monolog/Processor
