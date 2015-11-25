@@ -3,12 +3,12 @@
 %include	/usr/lib/rpm/macros.php
 Summary:	Symfony2 Monolog Bridge
 Name:		php-symfony2-MonologBridge
-Version:	2.7.5
+Version:	2.7.7
 Release:	1
 License:	MIT
 Group:		Development/Languages/PHP
 Source0:	https://github.com/symfony/%{package}/archive/v%{version}/%{package}-%{version}.tar.gz
-# Source0-md5:	2d47fd6e2149cf61580a4ce143fa5e94
+# Source0-md5:	4d7726eebab5c4b94fd87b01c8679540
 URL:		https://github.com/symfony/MonologBridge
 BuildRequires:	phpab
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
@@ -31,7 +31,7 @@ Provides integration for Monolog with various Symfony2 components.
 %setup -q -n monolog-bridge-%{version}
 
 %build
-phpab -n -e '*/Tests/*' -o autoloader.php .
+phpab -n -e '*/Tests/*' -o autoload.php .
 
 %install
 rm -rf $RPM_BUILD_ROOT
