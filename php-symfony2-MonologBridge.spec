@@ -15,6 +15,7 @@ BuildRequires:	rpmbuild(macros) >= 1.610
 Requires:	php(core) >= %{php_min_version}
 Requires:	php(pcre)
 Requires:	php(spl)
+Requires:	php-dirs >= 1.6
 #Requires:	php-monolog-Monolog >= 1.11
 Suggests:	php-symfony2-Console >= 2.3
 Suggests:	php-symfony2-EventDispatcher
