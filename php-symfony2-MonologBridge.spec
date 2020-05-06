@@ -2,12 +2,12 @@
 %define		php_min_version 5.3.9
 Summary:	Symfony2 Monolog Bridge
 Name:		php-symfony2-MonologBridge
-Version:	2.7.8
+Version:	2.8.52
 Release:	1
 License:	MIT
 Group:		Development/Languages/PHP
 Source0:	https://github.com/symfony/%{package}/archive/v%{version}/%{package}-%{version}.tar.gz
-# Source0-md5:	2213252b784ab3b44ac5188eb0c3dcec
+# Source0-md5:	e625fa0071fe2e1de48bad8c307d63c0
 URL:		https://github.com/symfony/MonologBridge
 BuildRequires:	phpab
 BuildRequires:	rpmbuild(macros) >= 1.610
